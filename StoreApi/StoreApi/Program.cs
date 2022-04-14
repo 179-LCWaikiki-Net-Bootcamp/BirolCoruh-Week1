@@ -10,7 +10,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreDbContext>(options => options.UseInMemoryDatabase("StoreDB"));
-
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
