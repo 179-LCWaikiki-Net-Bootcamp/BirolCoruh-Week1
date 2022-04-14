@@ -16,26 +16,24 @@ namespace StoreApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCategories()
+        public IActionResult GetCategories() 
         {
             var categories = _context.Categories.OrderBy(x => x.Id).ToList<Category>();
             return Ok(categories);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetCategoryById(int id)
+        [HttpGet("/Categories/{id}")] 
+        public ActionResult GetProductById(int id)
         {
-            var category = _context.Categories.Where(category => category.Id == id).SingleOrDefault();
-            if (category == null)
-            {
-                return BadRequest("Kategori Bulunamadı");
-            }
-            else
+            var category = _context.Categories.Where(x => x.Id == id).SingleOrDefault();
+            if (category != null)
             {
                 return Ok(category);
             }
+            return BadRequest("Kategori bulunamadı");
         }
-        [HttpGet("{name}")]
+
+        [HttpGet("{name}")] 
         public IActionResult GetCategoryByName(string name)
         {
             var category = _context.Categories.Where(category => category.Name == name).SingleOrDefault();
@@ -49,35 +47,35 @@ namespace StoreApi.Controllers
             }
         }
         [HttpPost]
-        public IActionResult AddCategory([FromBody] Category newCategory)
+        public IActionResult AddCategory([FromBody] Category newCategory) 
         {
             var category = _context.Categories.SingleOrDefault(x => x.Id == newCategory.Id);
 
             if (category != null)
             {
-                return NotFound("Eklenecek Kategori Bulunamadı");
+                return NotFound("Eklenecek Kategori Zaten Var");
             }
             else
             {
-                _context.Categories.Add(category);
+                _context.Categories.Add(newCategory);
                 _context.SaveChangesAsync();
-                return Created("Kategori Eklendi", category);
+                return Created("Kategori Eklendi", newCategory);
             }
         }
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] 
         public IActionResult UpdateCategory(int id, [FromBody] Category newCategory)
         {
-            var category = _context.Categories.SingleOrDefault(x => x.Id == newCategory.Id);
+            var category = _context.Categories.SingleOrDefault(x => x.Id == id);
 
-            if (category != null)
+            if (category == null)
             {
                 return NotFound("Eklenecek Kategori Bulunamadı");
             }
-            else
-            {
-                _context.Categories.Add(category);
-                return Created("Kategori Eklendi", category);
-            }
+
+            category.Name = newCategory.Name != default ? newCategory.Name : category.Name;
+            _context.SaveChanges();
+            return Ok();
+
         }
         [HttpDelete("{id}")]
         public ActionResult DeleteCategory(int id)
@@ -98,3 +96,5 @@ namespace StoreApi.Controllers
         }
     }
 }
+    
+

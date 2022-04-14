@@ -28,3 +28,4 @@ C:\Users\birol\OneDrive\Masaüstü\BirolCoruh-Week1\StoreApi\StoreApi\obj\Debug\
 C:\Users\birol\OneDrive\Masaüstü\BirolCoruh-Week1\StoreApi\StoreApi\obj\Debug\net6.0\StoreApi.pdb
 C:\Users\birol\OneDrive\Masaüstü\BirolCoruh-Week1\StoreApi\StoreApi\obj\Debug\net6.0\StoreApi.genruntimeconfig.cache
 C:\Users\birol\OneDrive\Masaüstü\BirolCoruh-Week1\StoreApi\StoreApi\obj\Debug\net6.0\ref\StoreApi.dll
+C:\Users\birol\OneDrive\Masaüstü\BirolCoruh-Week1\StoreApi\StoreApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

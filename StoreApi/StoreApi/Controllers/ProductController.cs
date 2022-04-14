@@ -22,23 +22,21 @@ namespace StoreApi.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetProductById(int id)
+        [HttpGet("/Products/{id}")]
+        public ActionResult GetProductById(int id)
         {
-            var product = _context.Products.Where(Product => Product.Id == id).SingleOrDefault();
-            if (product == null)
-            {
-                return BadRequest("Ürün Bulunamadı");
-            }
-            else
+            var product = _context.Products.Where(x => x.Id == id).SingleOrDefault();
+            if (product != null)
             {
                 return Ok(product);
             }
+            return BadRequest("Ürün bulunamadı");
         }
+
         [HttpGet("{name}")]
         public IActionResult GetProductByName(string name)
         {
-            var product = _context.Products.Where(Product => Product.Name == name).SingleOrDefault();
+            var product = _context.Products.Where(category => category.Name == name).SingleOrDefault();
             if (product == null)
             {
                 return NotFound("Ürün Bulunamadı");
@@ -53,31 +51,35 @@ namespace StoreApi.Controllers
         {
             var product = _context.Products.SingleOrDefault(x => x.Id == newProduct.Id);
 
-            if (product != null)
+            if (product is not null)
             {
-                return NotFound("Eklenecek Ürün Bulunamadı");
+                return NotFound("Eklenecek Ürün Zaten Var");
             }
             else
             {
-                _context.Products.Add(product);
-                _context.SaveChangesAsync();
-                return Created("Ürün Eklendi", product);
+                _context.Products.Add(newProduct);
+                _context.SaveChanges();
+                return Ok("Ürün Eklendi");
             }
         }
+
         [HttpPut("{id}")]
         public IActionResult UpdateProduct(int id, [FromBody] Product newProduct)
         {
-            var product = _context.Products.SingleOrDefault(x => x.Id == newProduct.Id);
+            var product = _context.Products.SingleOrDefault(x => x.Id == id);
 
-            if (product != null)
+            if (product == null)
             {
                 return NotFound("Eklenecek Ürün Bulunamadı");
             }
-            else
-            {
-                _context.Products.Add(product);
-                return Created("Ürün Eklendi", product);
-            }
+
+            product.Name = newProduct.Name != default ? newProduct.Name : product.Name;
+            product.Description = newProduct.Description != default ? newProduct.Description : product.Description;
+            product.Price = newProduct.Price != default ? newProduct.Price : product.Price;
+            product.Stock = newProduct.Stock != default ? newProduct.Stock : product.Stock;
+            _context.SaveChanges();
+            return Ok();
+
         }
         [HttpDelete("{id}")]
         public ActionResult DeleteProduct(int id)

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "goXYsoV/2rf/fd47U8ClqussVAQi0vFfoAJeStsNpzFuAQKKFDlxK+rfaz7IZaDMJJOfoeNeSkaUwBY8sflqgA==",
+  "dgSpecHash": "/aA6x2nAFAggNua0b44XbnxDbFPclwV5+cMLibCqjqlAtwgMFNifHxnmQ9eOPF6ieSJoxwIe6lp5X48Yn9idXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\birol\\OneDrive\\Masaüstü\\BirolCoruh-Week1\\StoreApi\\StoreApi\\StoreApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.4\\microsoft.entityframeworkcore.6.0.4.nupkg.sha512",
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.4\\microsoft.entityframeworkcore.abstractions.6.0.4.nupkg.sha512",
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.4\\microsoft.entityframeworkcore.analyzers.6.0.4.nupkg.sha512",
+    "C:\\Users\\birol\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\6.0.4\\microsoft.entityframeworkcore.inmemory.6.0.4.nupkg.sha512",
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\birol\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
